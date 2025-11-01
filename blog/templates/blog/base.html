@@ -1,0 +1,30 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}My Blog{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header style="background:#0b5cff;color:#fff;padding:10px;">
+    <div style="max-width:900px;margin:0 auto;">
+      <h1 style="margin:0;"><a href="{% url 'blog' %}" style="color:white;text-decoration:none;">Ayiko's Blog</a></h1>
+      <nav style="margin-top:6px;">
+        <a href="{% url 'blog' %}">Home</a> |
+        <a href="{% url 'show_all' %}">All posts</a> |
+        <a href="{% url 'about' %}">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main style="max-width:900px;margin:20px auto;padding:0 10px;">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer style="text-align:center;padding:12px;background:#fff;">
+    <small>&copy; {{ now.year|default:"2025" }} Ayiko Chrispus</small>
+  </footer>
+</body>
+</html>
